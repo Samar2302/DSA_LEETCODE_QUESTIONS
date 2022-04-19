@@ -52,6 +52,11 @@ class GFG {
 class Solution{
     public static int doUnion(int a[], int n, int b[], int m) 
     {
-        int
+        int[] arr=new int[100000];
+        int s=0;
+        for(int x:a) arr[x]++;
+        for(int x:b) arr[x]++;
+        for(int x:arr) if(x>0) s++;
+        return s;
     }
 }
