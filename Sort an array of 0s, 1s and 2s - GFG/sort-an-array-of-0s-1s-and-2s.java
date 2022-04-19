@@ -10,17 +10,23 @@ import java.util.*;
 
 class Solution
 {
+    public static void swap(int[] arr,int i,int j){
+        int x=arr[i];
+        arr[i]=arr[j];
+        arr[j]=x;
+    }
     public static void sort012(int a[], int n)
     {
-        int c0=0,c1=0,c2=0;
-        for(int x:a){
-            if(x==0) c0++;
-            else if(x==1) c1++;
-            else c2++;
+        int l=0,mid=0,h=n-1;
+        while(mid<=h){
+            if(a[mid]==0){
+                swap(a,mid,l);
+                l++;mid++;
+            }else if(a[mid]==2){
+                swap(a,mid,h);
+                h--;
+            }else mid++;
         }
-        for(int i=0;i<c0;i++) a[i]=0;
-        for(int i=c0;i<c0+c1;i++) a[i]=1;
-        for(int i=c0+c1;i<a.length;i++) a[i]=2;
     }
 }
 
