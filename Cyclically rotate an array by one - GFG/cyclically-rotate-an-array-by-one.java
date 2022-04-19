@@ -40,13 +40,20 @@ class GFG {
 //User function Template for Java
 
 class Compute {
-    
+    public void swap(int[] arr,int i,int j){
+        int x=arr[i];
+        arr[i]=arr[j];
+        arr[j]=x;
+    }
+    public void reverse(int[] arr,int l,int r){
+        while(l<r){
+            swap(arr,l,r);
+            l++;r--;
+        }
+    }
     public void rotate(int arr[], int n)
     {
-        int temp=arr[n-1];
-        for(int i=n-1;i>0;i--){
-            arr[i]=arr[i-1];
-        }
-        arr[0]=temp;
+        reverse(arr,0,n-2);
+        reverse(arr,0,n-1);
     }
 }
