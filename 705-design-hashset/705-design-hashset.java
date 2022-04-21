@@ -1,22 +1,20 @@
 class MyHashSet {
-    private ArrayList<Integer> al;
+    private transient HashMap map;
+    private static final Object PRESENT = new Object();
     public MyHashSet() {
-        al=new ArrayList<>();
+        map=new HashMap<>();
     }
     
     public void add(int key) {
-        if(!al.contains(key))
-        al.add(key);
+        map.put(key,PRESENT);
     }
     
     public void remove(int key) {
-        int idx=-1;
-        if(al.contains(key)) idx=al.indexOf(key);
-        if(idx!=-1) al.remove(idx);
+        map.remove(key);
     }
     
     public boolean contains(int key) {
-        return al.contains(key);
+        return map.containsKey(key);
     }
 }
 
