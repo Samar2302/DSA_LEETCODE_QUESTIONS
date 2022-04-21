@@ -1,12 +1,11 @@
 class MyHashSet {
-    private transient HashMap map;
-    private static final Object PRESENT = new Object();
+    private HashMap<Integer,Integer> map;
     public MyHashSet() {
         map=new HashMap<>();
     }
     
     public void add(int key) {
-        map.put(key,PRESENT);
+        map.put(key,1);
     }
     
     public void remove(int key) {
