@@ -4,7 +4,6 @@ class Solution {
     }
     public int findKthPositive(int[] arr, int k) {
         int l=0,r=arr.length-1;
-        //int miss=calc(arr[arr.length-1],arr.length);
         while(l<=r){
             int mid=l+(r-l)/2;
             int miss=calc(arr[mid],mid+1);
