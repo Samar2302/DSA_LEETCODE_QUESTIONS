@@ -1,23 +1,23 @@
 class Solution {
+    int[] parent;
     public boolean isBipartite(int[][] graph) {
-        int[] col=new int[graph.length];
+        parent=new int[graph.length];
+        for(int i=0;i<parent.length;i++) parent[i]=i;
         for(int i=0;i<graph.length;i++){
-            if(col[i]==0){
-                Queue<Integer> q=new ArrayDeque<>();
-                col[i]=1;
-                q.add(i);
-                while(!q.isEmpty()){
-                    int node=q.poll();
-                    for(int n:graph[node]){
-                        if(col[n]==0) {
-                            q.add(n);
-                            col[n]=-col[node];
-                        }
-                        else if(col[n]==col[node]) return false;
-                    }
-                }
+            for(int n:graph[i]){
+                if(findParent(n)==findParent(i)) return false;
+                union(n,graph[i][0]);
             }
         }
         return true;
+    }
+    public void union(int u,int v){
+        int parU=findParent(u);
+        int parV=findParent(v);
+        if(parU!=parV) parent[parU]=parV;
+    }
+    public int findParent(int u){
+        if(parent[u]==u) return u;
+        return parent[u]=findParent(parent[u]);
     }
 }
