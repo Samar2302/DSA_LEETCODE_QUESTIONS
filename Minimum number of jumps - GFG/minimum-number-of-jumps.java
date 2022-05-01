@@ -26,19 +26,25 @@ class GFG
 
 
 class Solution{
+    static int findMax(int[] arr,int beg,int end){
+        int max=beg;
+        for(int i=beg+1;i<=end;i++){
+            if(arr[max]+max<arr[i]+i) max=i;
+        }
+        return max;
+    }
     static int minJumps(int[] arr){
-        if(arr.length<=1) return 0;
-        if(arr[0]==0) return -1;
-        int max=arr[0],step=arr[0],count=1;
-        for(int i=1;i<arr.length;i++){
-            if(i==arr.length-1) return count;
-            max=Math.max(i+arr[i],max);
-            step--;
-            if(step==0) {
-            count++;
-            if(i>=max) return -1;
-            step=max-i;
+        if(arr.length==1) return arr[0];
+        int ans=0,i=0;
+        for(;i<arr.length;){
+            if(arr[i]==0) break;
+            if(arr[i]+i>=arr.length-1) {
+                ans++;
+                return ans;
             }
+            int max=findMax(arr,i+1,arr[i]+i);
+            i=max;
+            ans++;
         }
         return -1;
     }
