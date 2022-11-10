@@ -7,15 +7,11 @@ class Solution {
                 nums1[i]=nums2[j];
                 nums2[j]=t;
                 Arrays.sort(nums2);
-                i++;
-            }else{
-                i++;
             }
+            i++;
         }
-        j=0;
-        while(i<nums1.length && j<n){
-            nums1[i]=nums2[j];
-            i++;j++;
+        while(j<n){
+            nums1[i++]=nums2[j++];
         }
     }
 }
